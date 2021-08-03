@@ -4,9 +4,21 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import shoppingCart from './redux/reducers/shoppingCart'
+import { Provider } from 'react-redux';
+import { createStore, combineReducers } from 'redux';
+
+const rootReducer = combineReducers({
+  shoppingCart,
+})
+
+const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>,
   </React.StrictMode>,
   document.getElementById('root')
 );
